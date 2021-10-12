@@ -64,6 +64,15 @@ func (filter *Filter) Contain(data []byte) (bool, error) {
 	return filter.cf.Contain(data), nil
 }
 
+func (filter *Filter) Delete(data []byte) (bool, error) {
+	filter.mu.RLock()
+	defer filter.mu.RUnlock()
+	if filter.err != nil {
+		return false, filter.err
+	}
+	return filter.cf.Delete(data), nil
+}
+
 func (filter *Filter) Size() uint {
 	filter.mu.RLock()
 	defer filter.mu.RUnlock()

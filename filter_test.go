@@ -54,6 +54,11 @@ func Test_Filter(t *testing.T) {
 
 	assert.Equal(t, testdata, kv.value)
 
+	filter.Delete(b)
+	ok, _ = filter.Contain(b)
+	assert.Equal(t, false, ok)
+	assert.Equal(t, uint(1), filter.Size())
+
 	cancel()
 }
 
