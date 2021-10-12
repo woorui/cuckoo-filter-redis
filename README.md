@@ -8,7 +8,7 @@ Concurrent, persistable <https://github.com/linvon/cuckoo-filter> .
 func main() {
 	kv := filter.NewRedisKV(redis.NewClient(&redis.Options{Addr: "127.0.0.1:6379"}), "YOUR_REDIS_KEY")
 
-	filter, close, err := filter.NewFilter(context.TODO(), kv, 2*time.Second, cuckoo.NewFilter(4, 9, 3900, cuckoo.TableTypePacked))
+	filter, close, err := filter.NewFilter(context.TODO(), kv, 24*time.Hour, cuckoo.NewFilter(4, 9, 3900, cuckoo.TableTypePacked))
 	if err != nil {
 		panic(err)
 	}
