@@ -24,7 +24,7 @@ func NewFilter(ctx context.Context, kv KV, every time.Duration, initMemFilter *c
 
 	var cf *cuckoo.Filter
 	if len(b) != 0 {
-		cf, err = cuckoo.Decode(b)
+		cf, err = cuckoo.DecodeFrom(b)
 		if err != nil {
 			return nil, func() {}, err
 		}
