@@ -1,10 +1,15 @@
-# cuckoo-filter-redis
+package main
 
-Concurrent, persistable <https://github.com/linvon/cuckoo-filter> .
+import (
+	"context"
+	"fmt"
+	"time"
 
-## example
+	"github.com/go-redis/redis/v8"
+	"github.com/linvon/cuckoo-filter"
+	filter "github.com/woorui/cuckoo-filter-redis"
+)
 
-```go
 func main() {
 	kv := filter.NewRedisKV(redis.NewClient(&redis.Options{Addr: "127.0.0.1:6379"}), "YOUR_REDIS_KEY")
 
@@ -24,8 +29,3 @@ func main() {
 
 	fmt.Printf("The filter size is %d \n", filter.Size())
 }
-
-// Output:
-// The filter contain A 
-// The filter size is 1
-```
