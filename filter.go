@@ -8,6 +8,13 @@ import (
 	"github.com/linvon/cuckoo-filter"
 )
 
+var MemNewFilter = cuckoo.NewFilter
+
+const (
+	TableTypeSingle = cuckoo.TableTypeSingle
+	TableTypePacked = cuckoo.TableTypePacked
+)
+
 type Filter struct {
 	cf    *cuckoo.Filter
 	kv    KV

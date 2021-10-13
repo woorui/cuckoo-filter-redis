@@ -5,10 +5,21 @@ Concurrent, persistable <https://github.com/linvon/cuckoo-filter> .
 ## example
 
 ```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"time"
+
+	"github.com/go-redis/redis/v8"
+	filter "github.com/woorui/cuckoo-filter-redis"
+)
+
 func main() {
 	kv := filter.NewRedisKV(redis.NewClient(&redis.Options{Addr: "127.0.0.1:6379"}), "YOUR_REDIS_KEY")
 
-	filter, close, err := filter.NewFilter(context.TODO(), kv, 24*time.Hour, cuckoo.NewFilter(4, 9, 3900, cuckoo.TableTypePacked))
+	filter, close, err := filter.NewFilter(context.TODO(), kv, 24*time.Hour, filter.MemNewFilter(4, 9, 3900, filter.TableTypePacked))
 	if err != nil {
 		panic(err)
 	}
