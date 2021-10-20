@@ -1,6 +1,6 @@
 # cuckoo-filter-redis
 
-Concurrent, persistable <https://github.com/linvon/cuckoo-filter> .
+Concurrent, persistable, stand-alone <https://github.com/linvon/cuckoo-filter> .
 
 ## example
 
@@ -40,3 +40,9 @@ func main() {
 // The filter contain A 
 // The filter size is 1
 ```
+
+
+
+TODO:
+1. add redis watcher, support distributed filter
+2. cron dump data only exec once in distributed env
